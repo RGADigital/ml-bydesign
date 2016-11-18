@@ -5,13 +5,16 @@
 * Apply image recognition & classification technology in your work.
 
 ## Understanding concept of machine learning for image recognition ( 30 mins )
-* MNIST
-* ImageNet
+* [MNIST](http://yann.lecun.com/exdb/mnist/)
+ * [MNIST 8 training data](http://cs.nyu.edu/~roweis/data/mnist_train8.jpg)
+ * [How MNIST works](https://ml4a.github.io/images/figures/mnist-input.png)
+* [ImageNet](http://image-net.org/)
+ 
 
 ## Understanding dimensionality reduction. ( 30 mins )
 * [t-sne](https://lvdmaaten.github.io/tsne/)
-* [t-sne shape classification example](https://lvdmaaten.github.io/tsne/examples/20news_tsne.jpg)
-* [t-sne MNIST example](https://lvdmaaten.github.io/tsne/examples/mnist_tsne.jpg)
+ * [t-sne shape classification example](https://lvdmaaten.github.io/tsne/examples/20news_tsne.jpg)
+ * [t-sne MNIST example](https://lvdmaaten.github.io/tsne/examples/mnist_tsne.jpg)
 
 ## Dependencies
 * [openframeworks](https://www.openframeworks.cc)
