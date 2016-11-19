@@ -1,14 +1,20 @@
 # goal:
+Learn how to use style transfer and deep dream in your apps
 
 This project will help us build 3 different things:
 
-* First we will generate a neural network image gallery. The gallery allows you to test out different neural styles algorithms: https://github.com/somaticio/style_transfer_photo_gallery
-use this code that runs on almost any computer (in bash) , try modifying it to generate different styles.
+# Part I: Generate a neural network image gallery
 
-* Secondly we will build a slack bot: https://github.com/somaticio/slack_stylizebot
+[https://github.com/somaticio/style_transfer_photo_gallery](https://github.com/somaticio/style_transfer_photo_gallery)
 
+# Part II: Building a slackbot
 
-* Third, we will try and modify deep dream so that we can create our own effects, this requires advanced programming and math skills: https://github.com/google/deepdream
+[https://github.com/somaticio/slack_stylizebot](https://github.com/somaticio/slack_stylizebot)
+
+# Part III: Modify deep dream
+
+[https://github.com/somaticio/merge-dream](https://github.com/somaticio/merge-dream)
+
 
 
 
@@ -22,7 +28,6 @@ So we will provide pretrained models for you to use.
 Register a user account at: http://www.somatic.io/user/sign_up?code=hackday 
 
 
-Now you can  view any of pretrained deep dream and style transfers we have:
 
 
 
@@ -93,7 +98,9 @@ Additionally, image filters can be used to add a more personal tone to interacti
 ##### We Makes Training & Deployment Easy
 Although training remains an art, at Somatic we have built a system to make training new models very easy. You can get started training in just a few steps.
 
-In this exercise, we will demonstrate how easy it is to get a new model up and running.
+In this exercise, we will demonstrate how easy it is to get a new model up and running:
+
+http://www.somatic.io/trainyourmodel
 
 Additionally, we have built out an appended URL api, that takes almost all the work off of the developer for simple applications and customer development and testing.
 

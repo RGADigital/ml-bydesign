@@ -7,8 +7,9 @@
 ## Understanding concept of machine learning for image recognition ( 30 mins )
 * [MNIST](http://yann.lecun.com/exdb/mnist/)
  * [MNIST 8 training data](http://cs.nyu.edu/~roweis/data/mnist_train8.jpg)
- * [How MNIST works](https://ml4a.github.io/images/figures/mnist-input.png)
+ * [How MNIST works](https://ml4a.github.io/ml4a/neural_networks/)
 * [ImageNet](http://image-net.org/)
+ * The classification task is made up of 1.2 million images in the training set, each labeled with one of 1000 categories that cover a wide variety of objects, animals, scenes, and even some abstract geometric concepts such as “hook”, or “spiral”.
  
 
 ## Understanding dimensionality reduction. ( 30 mins )
