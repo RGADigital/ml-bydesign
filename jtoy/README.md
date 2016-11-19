@@ -30,9 +30,6 @@ Register a user account at: http://www.somatic.io/user/sign_up?code=hackday
 
 
 
-You
-
-
 
 
 
@@ -101,7 +98,9 @@ Additionally, image filters can be used to add a more personal tone to interacti
 ##### We Makes Training & Deployment Easy
 Although training remains an art, at Somatic we have built a system to make training new models very easy. You can get started training in just a few steps.
 
-In this exercise, we will demonstrate how easy it is to get a new model up and running.
+In this exercise, we will demonstrate how easy it is to get a new model up and running:
+
+http://www.somatic.io/trainyourmodel
 
 Additionally, we have built out an appended URL api, that takes almost all the work off of the developer for simple applications and customer development and testing.
 
