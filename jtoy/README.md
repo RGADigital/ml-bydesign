@@ -2,21 +2,20 @@
 
 This project will help us build 3 different things:
 
-First we will generate a neural network image gallery. The gallery allows you to test out different neural styles and deep dream algorithms.
+* First we will generate a neural network image gallery. The gallery allows you to test out different neural styles algorithms: https://github.com/somaticio/style_transfer_photo_gallery
+use this code that runs on almost any computer (in bash) , try modifying it to generate different styles.
 
-Secondly we will build a slack bot 
-
-
-Third, we will try and modify deep dream so that we can create our own effects.
-
-we are going to try and modify a neural network to generate different effects.  then we make a bot that takes requests from a service we choose (slack, reddit,twitter) and generate photo callergy.  
-
- images will be generated using neural style and deep dream.
-
-be able to test out different visualizations of deep dream and 
+* Secondly we will build a slack bot: https://github.com/somaticio/slack_stylizebot
 
 
-Training on these algorithms usually takes a day to several weeks depending on the training data and the parameters chosen for the models.
+* Third, we will try and modify deep dream so that we can create our own effects, this requires advanced programming and math skills: https://github.com/google/deepdream
+
+
+
+
+
+#Training
+Trainig on these algorithms usually takes a day to several weeks depending on the training data and the parameters chosen for the models.
 
 So we will provide pretrained models for you to use.
 
@@ -27,18 +26,12 @@ Now you can  view any of pretrained deep dream and style transfers we have:
 
 
 
-We have provided some sample code that runs to generate images given a folder. to run it you should have bash and curl installed.
-
-
-generate_gallery.sh /path/to/folder
-
-This should be enough for you to
 
 
 
 # Why Deep Learning Image Transformation Matters For Advertisers, Marketers, and Designers
 ### Machine learning will become a standard part of the creator toolkit. 
-###It's not equivalent to a human expert, but it's fast and scalable.
+###It's not equivalent to a human expert, but it can help us prototype ideas rapidly and express ourselves in different ways.
 
 ## What deep learning will enable you to do.
 
@@ -80,7 +73,6 @@ For example, espnfc.us often uses artistic images to tell stories. While no fast
 
 Being on the cutting edge is important for an agency's brand as well as the brand of individual creatives. Given the growing influence of machine learning, demonstrated knowledge can help build an influencer image. Whether it's chat bots, neural style filters, image search, AlphaGo, or self driver cars, machine learning is driving significant change in the economy. 
 
-* [MIT Nightmare Machine](http://nightmare.mit.edu/)
 
 * [Deep Dream](https://github.com/google/deepdream)
 
