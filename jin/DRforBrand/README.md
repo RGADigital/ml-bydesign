@@ -7,7 +7,7 @@
 ## Understanding concept of machine learning for image recognition ( 30 mins )
 * [MNIST](http://yann.lecun.com/exdb/mnist/)
  * [MNIST 8 training data](http://cs.nyu.edu/~roweis/data/mnist_train8.jpg)
- * [How MNIST works](https://ml4a.github.io/images/figures/mnist-input.png)
+ * [How MNIST works](https://ml4a.github.io/ml4a/neural_networks/)
 * [ImageNet](http://image-net.org/)
  
 
