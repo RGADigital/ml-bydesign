@@ -31,7 +31,7 @@ Now you can  view any of pretrained deep dream and style transfers we have:
 
 # Why Deep Learning Image Transformation Matters For Advertisers, Marketers, and Designers
 ### Machine learning will become a standard part of the creator toolkit. 
-###It's not equivalent to a human expert, but it's fast and scalable.
+###It's not equivalent to a human expert, but it can help us prototype ideas rapidly and express ourselves in different ways.
 
 ## What deep learning will enable you to do.
 
@@ -73,7 +73,6 @@ For example, espnfc.us often uses artistic images to tell stories. While no fast
 
 Being on the cutting edge is important for an agency's brand as well as the brand of individual creatives. Given the growing influence of machine learning, demonstrated knowledge can help build an influencer image. Whether it's chat bots, neural style filters, image search, AlphaGo, or self driver cars, machine learning is driving significant change in the economy. 
 
-* [MIT Nightmare Machine](http://nightmare.mit.edu/)
 
 * [Deep Dream](https://github.com/google/deepdream)
 
