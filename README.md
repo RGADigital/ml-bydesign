@@ -6,6 +6,6 @@ This is a repository for the RGA By Design hackday on november 19th hosted by R/
 
 We built the hackday around 3 central projects
 
-1. text generation with RNNs [project](./tree/master/hirsch)
-2. style transfer and deep dream with images [project](./tree/master/hirsch)
-3. image classification and dimensionality reduction  [project](./tree/master/hirsch)
+1. text generation with RNNs [project README](./hirsch/char-rnn-tensorflow/README.md)
+2. style transfer and deep dream with images [project README](./jtoy/README.md)
+3. image classification and dimensionality reduction  [project README](./jin/DRforBrand/README.md)
