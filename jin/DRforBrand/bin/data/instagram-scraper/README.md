@@ -2,24 +2,81 @@
 
 Instagram Scraper
 =================
-[![Build Status](https://travis-ci.org/rarcega/instagram-scraper.svg?branch=master)](https://travis-ci.org/rarcega/instagram-scraper)
+[![PyPI](https://img.shields.io/pypi/v/instagram-scraper.svg)](https://pypi.python.org/pypi/instagram-scraper) [![Build Status](https://travis-ci.org/rarcega/instagram-scraper.svg?branch=master)](https://travis-ci.org/rarcega/instagram-scraper)
 
 instagram-scraper is a command-line application written in Python that scrapes and downloads an instagram user's photos and videos. Use responsibly.
 
 Install
 -------
-To install the project dependencies:
+To install instagram-scraper:
 ```bash
-$ pip install -r requirements.txt
+$ pip install instagram-scraper
+```
+
+To update instagram-scraper:
+```bash
+$ pip install instagram-scraper --upgrade
 ```
 
 Usage
 -----
-To run the application:
+To scrape a public user's media:
 ```bash
-$ python app.py <username>             
+$ instagram-scraper <username>             
 ```
-Media will be download to *`<current working directory>/<username>`*
+
+To specify multiple users, pass a delimited list of users:
+```bash
+$ instagram-scraper username1,username2,username3           
+```
+
+You can also supply a file containing a list of usernames:
+```bash
+$ instagram-scraper -f ig_users.txt           
+```
+```
+# ig_users.txt
+
+username1
+username2
+username3
+
+# and so on...
+```
+The usernames may be separated by newlines, commas, semicolons, or whitespace.
+
+To specify the download destination:
+```bash
+$ instagram-scraper <username> -d /path/to/destination
+```
+By default, media will be download to *`<current working directory>/<username>`*
+
+To scrape a private user's media when you are an approved follower:
+```bash
+$ instagram-scraper <username> -u <your username> -p <your password>
+```
+
+
+Develop
+-------
+
+Clone the repo and create a virtualenv 
+```bash
+$ virtualenv venv
+$ source venv/bin/activate
+$ python setup.py develop
+```
+
+Running Tests
+-------------
+
+```bash
+$ python setup.py test
+
+# or just 
+
+$ nosetests
+```
 
 Contributing
 ------------

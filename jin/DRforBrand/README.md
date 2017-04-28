@@ -10,7 +10,7 @@
  * [How MNIST works](https://ml4a.github.io/ml4a/neural_networks/)
 * [ImageNet](http://image-net.org/)
  * The classification task is made up of 1.2 million images in the training set, each labeled with one of 1000 categories that cover a wide variety of objects, animals, scenes, and even some abstract geometric concepts such as “hook”, or “spiral”.
- 
+
 
 ## Understanding dimensionality reduction. ( 30 mins )
 * [t-sne](https://lvdmaaten.github.io/tsne/)
@@ -20,14 +20,23 @@
 ## Dependencies
 * [openframeworks](https://www.openframeworks.cc)
 * [ofxAssignment](https://github.com/kylemcdonald/ofxAssignment)
+* [ofxCcv](https://github.com/kylemcdonald/ofxCcv)
 * [ofxTSNE](https://github.com/genekogan/ofxTSNE)
 
 ## Setup
-1. clone ml-bydesign folder at the same level of of addons folder  
-2. cd ml-bydesign/jin/DRforBrand
-3. sh setup.sh
-4. open Project.xcconfig with Xcode.
-5. Read ml-bydesign/jin/DRforBrand/bin/data/instagram-scraper/README.md
+1. Install Open Frameworks from [here](https://www.openframeworks.cc)
+2. clone ml-bydesign folder at the same level of addons folder inside the openframeworks directory
+3. Install the required addons by cloning them into the addons folder
+    - [ofxAssignment](https://github.com/kylemcdonald/ofxAssignment)
+    - [ofxCcv](https://github.com/kylemcdonald/ofxCcv)
+    - [ofxTSNE](https://github.com/genekogan/ofxTSNE)
+4. from the open frameworks root directory, `cd ml-bydesign/jin/DRforBrand`
+5. sh setup.sh
+6. `cd bin/data/instagram-scraper`
+7. `pip install instagram-scraper`
+8. Open ml-bydesign/jin/DRforBrand/Project.xcconfig with Xcode. Open Framworks XCode reference [here](http://openframeworks.cc/setup/xcode/)
+
+## Usage
 
 ## Code walk through ( 30 mins )
 
@@ -40,4 +49,4 @@
 ![04_tsne_grid_adidas](https://cloud.githubusercontent.com/assets/333218/20449643/aa21dc68-adb8-11e6-99da-6f76ecb55ebd.png)
 ![07_tsne_grid_nike_adidas_tint](https://cloud.githubusercontent.com/assets/333218/20449655/b52310dc-adb8-11e6-80fe-b2c250c39d8c.png)
 
-## Bring your ideas 
+## Bring your ideas
