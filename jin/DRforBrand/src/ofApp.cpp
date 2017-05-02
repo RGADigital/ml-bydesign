@@ -29,12 +29,34 @@ void ofApp::setup(){
     // displayW, displayH = resolution of the individual thumbnails for your output image - be careful about going over your maximum texture size on graphics card - 5000x5000 may work, but 10000x10000 may not
     // perplexity, theta (for t-SNE, see 'example' for explanation of these)
     
-    string imageDir = "instagram-scraper/nike";
-    string imageDir2 = "instagram-scraper/adidas";
-    string imageSavePath = "tsne_grid.png";
-    string tintImageSavePath = "tsne_grid_tint.png";
-    nx = 2;
-    ny = 2;
+//    string imageDir = "instagram-scraper/nike";
+//    string imageDir2 = "instagram-scraper/adidas";
+//    string imageSavePath = "tsne_grid.png";
+//    string tintImageSavePath = "tsne_grid_tint.png";
+    
+    
+    cout << "args: " << arguments.at(0) << ", 2: " << arguments.at(2) << endl;
+    
+    string brand1, brand2;
+    int dimension;
+    
+    if (arguments.size() > 0 ) {
+        brand1 = arguments.at(0);
+        brand2 = arguments.at(1);
+        dimension = std::stoi(arguments.at(2));
+    } else {
+        brand1 = 'nike';
+        brand2 = 'adidas';
+        dimension = 15;    }
+
+    
+    string imageDir = "instagram-scraper/"  + brand1;
+    string imageDir2 = "instagram-scraper/" + brand2;
+    string imageSavePath = "tsne_grid_" + brand1 + "_" + brand2 + "_" + arguments.at(2) + ".png";
+    string tintImageSavePath = "tsne_grid_tint_" + brand1 + "_" + brand2 + "_" + arguments.at(2) + ".png";
+    
+    nx = dimension;
+    ny = dimension;
     w = 256; //do not go lower than 256 - it will work, but results won't be as good
     h = 256;
     displayW = 128;

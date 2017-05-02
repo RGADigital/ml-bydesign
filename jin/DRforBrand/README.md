@@ -37,6 +37,21 @@
 8. Open ml-bydesign/jin/DRforBrand/Project.xcconfig with Xcode. Open Framworks XCode reference [here](http://openframeworks.cc/setup/xcode/)
 
 ## Usage
+1. `cd ml-bydesign/jin/DRforBrand/bin/data/instagram-scraper`
+2. `instagram-scraper <brand1>,<brand2>` (ex: `instagram-scraper verizon,att`)
+3. In Xcode top menu bar, go to product > scheme > edit scheme
+4. Enter `--args --arguments <brand1> <brand2> <grid dimension>` (ex: `--args --arguments beatsbydre applemusic 35`)
+5. Hit "close"
+6. In top menu, make sure the project to build is set for "DRForBrand Release" (it sometimes defaults to openFrameworks)
+7. Build and run
+
+2 image grids will be generated - one without any tinting, and one with each brand tinted. The images will be saved to the bin/data directory.
+<Brand1> will be tinted blue. <Brand2> will be tinted red.
+
+
+**Note:**
+After the first build, you can run via the command line, from within the `ml-bydesign/jin/bin/` directory
+`open -n ./DRforBrand.app/ --args --arguments <brand1> <brand2> <dimension>`
 
 ## Code walk through ( 30 mins )
 

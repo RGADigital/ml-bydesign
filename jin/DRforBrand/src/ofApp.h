@@ -46,4 +46,6 @@ public:
     ofxPanel gui;
     ofParameter<float> scale;
     ofParameter<bool> isTint;
+    
+    vector<string> arguments;
 };
