@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include <stdlib.h>
 
 const string allowed_ext[] = {"jpg", "png", "gif", "jpeg"};
 
@@ -29,11 +30,6 @@ void ofApp::setup(){
     // displayW, displayH = resolution of the individual thumbnails for your output image - be careful about going over your maximum texture size on graphics card - 5000x5000 may work, but 10000x10000 may not
     // perplexity, theta (for t-SNE, see 'example' for explanation of these)
     
-//    string imageDir = "instagram-scraper/nike";
-//    string imageDir2 = "instagram-scraper/adidas";
-//    string imageSavePath = "tsne_grid.png";
-//    string tintImageSavePath = "tsne_grid_tint.png";
-    
     
     cout << "args: " << arguments.at(0) << ", 2: " << arguments.at(2) << endl;
     
@@ -47,7 +43,8 @@ void ofApp::setup(){
     } else {
         brand1 = 'nike';
         brand2 = 'adidas';
-        dimension = 15;    }
+        dimension = 15;
+    }
 
     
     string imageDir = "instagram-scraper/"  + brand1;
@@ -63,6 +60,15 @@ void ofApp::setup(){
     displayH = 128;
     perplexity = 50; // corresponds to "number of neighbors", somewhere in the range 10-100 is good
     theta = 0.5; // lower is more "accurate" but takes longer, don't need to change this
+    
+    // to run the instagram downloads directly from openframeworks... needs a little work still
+//    std::string instagramCmdStr = "python " + ofToDataPath("instagram-scraper/instagram_scraper/app.py", true) + " " + brand1 + "," + brand2;
+//    const char *instagramCmd = instagramCmdStr.c_str();
+    
+//    imageDir = ofToDataPath(imageDir);
+//    imageDir2 = ofToDataPath(imageDir2);
+//    
+//    std::system(instagramCmd);
     
     
     /////////////////////////////////////////////////////////////////////

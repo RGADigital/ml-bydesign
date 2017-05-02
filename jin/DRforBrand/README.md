@@ -38,9 +38,9 @@
 
 ## Usage
 1. `cd ml-bydesign/jin/DRforBrand/bin/data/instagram-scraper`
-2. `instagram-scraper <brand1>,<brand2>` (ex: `instagram-scraper verizon,att`)
+2. `instagram-scraper <brand1>,<brand2>` (ex: `instagram-scraper realdonaldtrump,hillaryclinton`)
 3. In Xcode top menu bar, go to product > scheme > edit scheme
-4. Enter `--args --arguments <brand1> <brand2> <grid dimension>` (ex: `--args --arguments beatsbydre applemusic 35`)
+4. Enter `--args --arguments <brand1> <brand2> <grid dimension>` (ex: `--args --arguments realdonaldtrump hillaryclinton 35`)
 5. Hit "close"
 6. In top menu, make sure the project to build is set for "DRForBrand Release" (it sometimes defaults to openFrameworks)
 7. Build and run
