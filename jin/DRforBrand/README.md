@@ -18,12 +18,13 @@
  * [t-sne MNIST example](https://lvdmaaten.github.io/tsne/examples/mnist_tsne.jpg)
 
 ## Dependencies
+* XCode
 * [openframeworks](https://www.openframeworks.cc)
 * [ofxAssignment](https://github.com/kylemcdonald/ofxAssignment)
 * [ofxCcv](https://github.com/kylemcdonald/ofxCcv)
 * [ofxTSNE](https://github.com/genekogan/ofxTSNE)
 
-## Setup
+## Setup (OS X)
 1. Install Open Frameworks from [here](https://www.openframeworks.cc)
 2. clone ml-bydesign folder at the same level of addons folder inside the openframeworks directory
 3. Install the required addons by cloning them into the addons folder
