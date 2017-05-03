@@ -45,14 +45,13 @@
 6. In top menu, make sure the project to build is set for "DRForBrand Release" (it sometimes defaults to openFrameworks)
 7. Build and run
 
-2 image grids will be generated - one without any tinting, and one with each brand tinted. The images will be saved to the bin/data directory.
-<Brand1> will be tinted blue. <Brand2> will be tinted red.
+Two image grids will be generated - one without any tinting, and one with each brand tinted. The images will be saved to the bin/data directory.
+<brand1> will be tinted blue. <brand2> will be tinted red.
 
 
 **Notes:**
 
 - After the first build, you can run via the command line, from within the `ml-bydesign/jin/bin/` directory with:
-
 `open -n ./DRforBrand.app/ --args --arguments <brand1> <brand2> <dimension>`
 -  large grid dimensions will require a lot of processing and may crash the program. We've seen good results with dimensions between 35 and 60.
 
