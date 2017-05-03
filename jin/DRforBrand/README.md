@@ -49,9 +49,12 @@
 <Brand1> will be tinted blue. <Brand2> will be tinted red.
 
 
-**Note:**
-After the first build, you can run via the command line, from within the `ml-bydesign/jin/bin/` directory
+**Notes:**
+
+- After the first build, you can run via the command line, from within the `ml-bydesign/jin/bin/` directory with:
+
 `open -n ./DRforBrand.app/ --args --arguments <brand1> <brand2> <dimension>`
+-  large grid dimensions will require a lot of processing and may crash the program. We've seen good results with dimensions between 35 and 60.
 
 ## Code walk through ( 30 mins )
 
