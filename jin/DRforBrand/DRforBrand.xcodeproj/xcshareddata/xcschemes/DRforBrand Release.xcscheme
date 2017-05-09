@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--args --arguments rei thenorthface 12"
+            argument = "--args --arguments rei thenorthface 35"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

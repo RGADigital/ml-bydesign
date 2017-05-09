@@ -31,7 +31,7 @@ void ofApp::setup(){
     // perplexity, theta (for t-SNE, see 'example' for explanation of these)
     
     
-    cout << "args: " << arguments.at(0) << ", 2: " << arguments.at(2) << endl;
+    cout << "args: " << arguments.at(0) << ", 2: " << arguments.at(1) << endl;
     
     string brand1, brand2;
     int dimension;
@@ -51,6 +51,7 @@ void ofApp::setup(){
     string imageDir2 = "instagram-scraper/" + brand2;
     string imageSavePath = "tsne_grid_" + brand1 + "_" + brand2 + "_" + arguments.at(2) + ".png";
     string tintImageSavePath = "tsne_grid_tint_" + brand1 + "_" + brand2 + "_" + arguments.at(2) + ".png";
+    string categoryImageSavePath = "tsne_categories_" + brand1 + "_" + brand2 + "_" + arguments.at(2) + ".png";
     string wordsSavePath = "tsne_categories_" + brand1 + "_" + brand2 + "_" + arguments.at(2) + ".txt";
     
     nx = dimension;
@@ -61,6 +62,8 @@ void ofApp::setup(){
     displayH = 128;
     perplexity = 50; // corresponds to "number of neighbors", somewhere in the range 10-100 is good
     theta = 0.5; // lower is more "accurate" but takes longer, don't need to change this
+    
+    int numToShowFromFirst = nx*ny/2;
     
     // to run the instagram downloads directly from openframeworks... needs a little work still to get the photos saved to the correct directory (outside the app execution space)
 //    std::string instagramCmdStr = "python " + ofToDataPath("instagram-scraper/instagram_scraper/app.py", true) + " " + brand1 + "," + brand2;
@@ -83,22 +86,36 @@ void ofApp::setup(){
     numOfFilesOnFirst = imageFiles.size();
     scan_dir_imgs(dir2);
     //nx = ny = floor(sqrt(imageFiles.size()));
+    
     if (imageFiles.size()  < nx * ny) {
         ofLog(OF_LOG_ERROR, "There are fewer images in the directory than the grid size requested (nx*ny="+ofToString((nx*ny))+"). Exiting to save you trouble...");
         ofExit(); // not enough images to fill the grid, so quitting
     }
     
+    if(numOfFilesOnFirst < numToShowFromFirst) {
+        numToShowFromFirst = numOfFilesOnFirst;
+    }
+    
+    
     // setup ofxCcv
     ccv.setup("image-net-2012.sqlite3");
     
-    
-    // load all the images
-    for(int i=0; i<nx*ny; i++) {
+    // load first account the images
+    for(int i=0; i<numToShowFromFirst; i++) {
         if (i % 20 == 0)    ofLog() << " - loading image "<<i<<" / "<<nx*ny<<" ("<<dir.size()<<" in dir)";
         images.push_back(ofImage());
         images.back().load(imageFiles[i]);
         
     }
+    
+    // load the images from the next account
+    for(int i=numToShowFromFirst; i<nx*ny; i++) {
+        if (i % 20 == 0)    ofLog() << " - loading image "<<i<<" / "<<nx*ny<<" ("<<dir.size()<<" in dir)";
+        images.push_back(ofImage());
+        images.back().load(imageFiles[i]);
+        
+    }
+    
     
     
     // resize images to w x h
@@ -124,13 +141,13 @@ void ofApp::setup(){
         encodings.push_back(encoding);
         
         // classify
-        vector<ofxCcv::Classification> classifiers = ccv.classify(images[i]);
         
         myfile << "\nIMAGE " << i << "\n";
         
+        classifiers = ccv.classify(images[i]);
+        
         for(ofxCcv::Classification a: classifiers){
-            myfile << a.imageNetName  << "\n"; // << " : " << a.confidence
-            cout << a.imageNetName  << std::endl;
+            myfile << a.imageNetName  << "\n";
         }
     }
     myfile.flush();
@@ -193,6 +210,38 @@ void ofApp::setup(){
     ofImage img2;
     fbo2.readToPixels(img2);
     img2.save(tintImageSavePath);
+    
+    // categories image overlay
+    ofFbo fbo3;
+    fbo3.allocate(nx * displayW, ny * displayH);
+    fbo3.begin();
+    ofClear(0, 0);
+    ofEnableAlphaBlending();
+    ofBackground(0,0,0,0);
+    for (int i=0; i<solvedGrid.size(); i++) {
+        float x = (fbo.getWidth() - displayW) * solvedGrid[i].x;
+        float y = (fbo.getHeight() - displayH) * solvedGrid[i].y;
+        ofSetColor(255, 255, 255, 255);
+        
+//        ofImage greyImage = images[i];
+        
+        int displace = 0;
+        classifiers = ccv.classify(images[i]);
+        
+        for(ofxCcv::Classification a: classifiers){
+            ofDrawBitmapString(a.imageNetName, x, y+displace);
+       //     myfile << a.imageNetName  << "\n"; // << " : " << a.confidence
+//            cout << a.imageNetName  << std::endl;
+            
+            displace += 20;
+        }
+        
+    }
+    fbo3.end();
+    ofImage img3;
+    fbo3.readToPixels(img3);
+    img3.save(categoryImageSavePath);
+    
     
     // setup gui
     gui.setup();

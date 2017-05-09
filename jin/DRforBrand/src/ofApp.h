@@ -50,4 +50,6 @@ public:
     ofParameter<bool> isTint;
     
     vector<string> arguments;
+    
+    vector<ofxCcv::Classification> classifiers;
 };
