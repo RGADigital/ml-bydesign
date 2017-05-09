@@ -43,6 +43,8 @@ public:
     int numOfFilesOnFirst;
     float perplexity, theta;
     
+    ofstream myfile;
+    
     ofxPanel gui;
     ofParameter<float> scale;
     ofParameter<bool> isTint;

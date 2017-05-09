@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--args --arguments samsungusa samsungbrasil 35"
+            argument = "--args --arguments rei thenorthface 12"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
