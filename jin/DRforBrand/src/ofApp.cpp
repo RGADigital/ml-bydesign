@@ -262,7 +262,7 @@ void ofApp::setup(){
     ofEnableAlphaBlending();
     ofBackground(0,0,0,0);
     for (int i=0; i<solvedGrid.size(); i++) {
-        float x = (fbo.getWidth() - displayW) * solvedGrid[i].x;
+        float x = (fbo.getWidth() - displayW) * solvedGrid[i].x + 10;
         float y = (fbo.getHeight() - displayH) * solvedGrid[i].y;
         ofSetColor(255, 255, 255, 255);
         
@@ -272,11 +272,11 @@ void ofApp::setup(){
         classifiers = ccv.classify(images[i]);
         
         for(ofxCcv::Classification a: classifiers){
-            ofDrawBitmapString(a.imageNetName, x, y+displace);
+            ofDrawBitmapString(a.imageNetName.substr(0, a.imageNetName.find(",", 0)), x, y+displace);
        //     myfile << a.imageNetName  << "\n"; // << " : " << a.confidence
 //            cout << a.imageNetName  << std::endl;
             
-            displace += 20;
+            displace += 14;
         }
         
     }
