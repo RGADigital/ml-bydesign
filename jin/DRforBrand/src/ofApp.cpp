@@ -1,10 +1,14 @@
 #include "ofApp.h"
 #include <stdlib.h>
+#include <algorithm>
 
 const string allowed_ext[] = {"jpg", "png", "gif", "jpeg"};
 
-void ofApp::scan_dir_imgs(ofDirectory dir){
+vector<ofFile> ofApp::scan_dir_imgs(ofDirectory dir){
     ofDirectory new_dir;
+    
+    vector<ofFile> imageFiles;
+    
     int size = dir.listDir();
     for (int i = 0; i < size; i++){
         if (dir.getFile(i).isDirectory()){
@@ -16,8 +20,12 @@ void ofApp::scan_dir_imgs(ofDirectory dir){
                              std::end(allowed_ext),
                              dir.getFile(i).getExtension()) != std::end(allowed_ext)) {
             imageFiles.push_back(dir.getFile(i));
+            
+            if ( dir.getFile(i).getExtension() != "jpg" ) cout << dir.getFile(i).getExtension() << endl;
         }
     }
+    
+    return imageFiles;
 }
 
 //--------------------------------------------------------------
@@ -41,8 +49,8 @@ void ofApp::setup(){
         brand2 = arguments.at(1);
         dimension = std::stoi(arguments.at(2));
     } else {
-        brand1 = 'nike';
-        brand2 = 'adidas';
+        brand1 = "nike";
+        brand2 = "adidas";
         dimension = 15;
     }
 
@@ -82,37 +90,64 @@ void ofApp::setup(){
     ofLog() << "Gathering images...";
     ofDirectory dir (imageDir);
     ofDirectory dir2 (imageDir2);
-    scan_dir_imgs(dir);
-    numOfFilesOnFirst = imageFiles.size();
-    scan_dir_imgs(dir2);
+    imageFiles1 = scan_dir_imgs(dir);
+    numOfFilesOnFirst = imageFiles1.size();
+    imageFiles2 = scan_dir_imgs(dir2);
+    
+    int numImagesToUse = nx*ny;
+    numToShowFromFirst = numImagesToUse/2;
+    numToShowFromSecond = numImagesToUse/2;
     //nx = ny = floor(sqrt(imageFiles.size()));
     
-    if (imageFiles.size()  < nx * ny) {
-        ofLog(OF_LOG_ERROR, "There are fewer images in the directory than the grid size requested (nx*ny="+ofToString((nx*ny))+"). Exiting to save you trouble...");
-        ofExit(); // not enough images to fill the grid, so quitting
+//    if ((imageFiles1.size() + imageFiles2.size())  < nx * ny) {
+//        ofLog(OF_LOG_ERROR, "There are fewer images in the directory than the grid size requested (nx*ny="+ofToString((nx*ny))+"). Exiting to save you trouble...");
+//        ofExit(); // not enough images to fill the grid, so quitting
+//    }
+//    
+//    if(numOfFilesOnFirst < numToShowFromFirst) {
+//        numToShowFromFirst = numOfFilesOnFirst;
+//    }
+//    
+//    // if the 2nd account doesnt have enough images to fill 1/2 the image
+//    if(imageFiles.size() - numToShowFromFirst < numToShowFromFirst ) {
+//        numToShowFromFirst += imageFiles.size()-numToShowFromFirst*2;
+//    }
+
+    
+    if( imageFiles1.size() < numToShowFromFirst) {
+        numToShowFromFirst = imageFiles1.size();
+        numToShowFromSecond = numImagesToUse - numToShowFromFirst;
     }
     
-    if(numOfFilesOnFirst < numToShowFromFirst) {
-        numToShowFromFirst = numOfFilesOnFirst;
+    if ( imageFiles2.size() < numToShowFromSecond ) {
+        numToShowFromSecond = imageFiles2.size();
+        numToShowFromFirst = numImagesToUse - numToShowFromSecond;
     }
     
+    if ((numToShowFromFirst + numToShowFromSecond)  < numImagesToUse) {
+            ofLog(OF_LOG_ERROR, "There are fewer images in the directory than the grid size requested (nx*ny="+ofToString((nx*ny))+"). Exiting to save you trouble...");
+            ofExit(); // not enough images to fill the grid, so quitting
+    }
     
     // setup ofxCcv
     ccv.setup("image-net-2012.sqlite3");
     
     // load first account the images
     for(int i=0; i<numToShowFromFirst; i++) {
-        if (i % 20 == 0)    ofLog() << " - loading image "<<i<<" / "<<nx*ny<<" ("<<dir.size()<<" in dir)";
+        if (i % 20 == 0)    ofLog() << " - loading image "<<i<<" / "<<numToShowFromFirst<<" ("<<imageFiles1.size()<<" in dir)";
         images.push_back(ofImage());
-        images.back().load(imageFiles[i]);
+        images.back().load(imageFiles1[i]);
         
     }
     
     // load the images from the next account
-    for(int i=numToShowFromFirst; i<nx*ny; i++) {
-        if (i % 20 == 0)    ofLog() << " - loading image "<<i<<" / "<<nx*ny<<" ("<<dir.size()<<" in dir)";
+    for(int i=0; i<numToShowFromSecond; i++) {
+        if (i % 20 == 0) {
+            
+            ofLog() << " - loading image "<<i<<" / "<<numToShowFromSecond<<" ("<<imageFiles2.size()<<" in dir)";
+        }
         images.push_back(ofImage());
-        images.back().load(imageFiles[i]);
+        images.back().load(imageFiles2[i]);
         
     }
     
@@ -146,8 +181,16 @@ void ofApp::setup(){
         
         classifiers = ccv.classify(images[i]);
         
+        
         for(ofxCcv::Classification a: classifiers){
-            myfile << a.imageNetName  << "\n";
+            myfile << a.imageNetName << " " << a.confidence  << "\n"; // << " : " << a.confidence
+            
+            // add to the classifiers vector
+            if( i < numToShowFromFirst ) {
+                classifiers1.push_back(a);
+            } else {
+                classifiers2.push_back(a);
+            }
         }
     }
     myfile.flush();
@@ -198,7 +241,7 @@ void ofApp::setup(){
         greyImage.setImageType(OF_IMAGE_GRAYSCALE);
         greyImage.draw(x, y, displayW, displayH);
         //if (isTint) {
-        if (numOfFilesOnFirst <= i ) {
+        if (numToShowFromFirst <= i ) {
             ofSetColor(255, 0, 0, 100); // set color to red
         } else {
             ofSetColor(0, 0, 255, 100); // set color to blue

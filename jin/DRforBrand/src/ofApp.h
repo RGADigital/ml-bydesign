@@ -25,12 +25,14 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    void scan_dir_imgs(ofDirectory dir);
+    vector<ofFile> scan_dir_imgs(ofDirectory dir);
     
     ofxCcv ccv;
     ofxTSNE tsne;
     ofxAssignment solver;
     
+    vector<ofFile> imageFiles1;
+    vector<ofFile> imageFiles2;
     vector<ofFile> imageFiles;
     vector<ofImage> images;
     vector<vector<float> > encodings;
@@ -41,6 +43,7 @@ public:
     int w, h;
     int displayW, displayH;
     int numOfFilesOnFirst;
+    int numToShowFromSecond;
     float perplexity, theta;
     
     ofstream myfile;
@@ -49,7 +52,11 @@ public:
     ofParameter<float> scale;
     ofParameter<bool> isTint;
     
+    
     vector<string> arguments;
     
     vector<ofxCcv::Classification> classifiers;
+    
+    vector<ofxCcv::Classification> classifiers1;
+    vector<ofxCcv::Classification> classifiers2;
 };

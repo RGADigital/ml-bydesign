@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--args --arguments rei thenorthface 35"
+            argument = "--args --arguments vinfarrell daveedwardss 45"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
